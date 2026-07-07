@@ -1,0 +1,73 @@
+============================================================
+LAPORAN XGBOOST - STEP 15
+============================================================
+
+Jumlah fitur: 17
+Train: 7881 baris | Test: 1971 baris
+
+scale_pos_weight dihitung dari train: 19.52
+
+--- KONFIGURASI TUNING ---
+Param grid: {'n_estimators': [100, 200], 'max_depth': [3, 5, 7], 'learning_rate': [0.01, 0.05, 0.1], 'min_child_weight': [1, 5, 10], 'scale_pos_weight': [1, np.float64(19.5234375)]}
+Cross-validation: TimeSeriesSplit (5 fold, menjaga urutan waktu)
+Scoring: recall (prioritas utama untuk mitigasi bencana)
+
+--- HASIL TUNING ---
+Best params: {'learning_rate': 0.01, 'max_depth': 3, 'min_child_weight': 5, 'n_estimators': 100, 'scale_pos_weight': np.float64(19.5234375)}
+Best CV recall score: 0.4297
+
+============================================================
+HASIL EVALUASI XGBOOST (TUNED) DI TEST SET
+============================================================
+
+--- CONFUSION MATRIX ---
+                 Prediksi Normal   Prediksi Ekstrem
+Aktual Normal    1223              638
+Aktual Ekstrem   51                59
+
+--- METRIK UTAMA ---
+Accuracy  : 0.6504
+Precision : 0.0846
+Recall    : 0.5364
+F1-Score  : 0.1462
+
+--- CLASSIFICATION REPORT LENGKAP ---
+              precision    recall  f1-score   support
+
+      Normal       0.96      0.66      0.78      1861
+     Ekstrem       0.08      0.54      0.15       110
+
+    accuracy                           0.65      1971
+   macro avg       0.52      0.60      0.46      1971
+weighted avg       0.91      0.65      0.74      1971
+
+
+--- FEATURE IMPORTANCE (XGBoost) ---
+                 fitur  importance
+     Tetangga_Lag1_avg    0.358739
+                  Lag2    0.091582
+                Roll30    0.088009
+    Tetangga_Roll7_avg    0.085936
+                  Lag1    0.082360
+           Hari_Minggu    0.082322
+            Hari_Tahun    0.081254
+                  Lag3    0.080667
+                 Roll7    0.049131
+                 Bulan    0.000000
+STASIUN_Lubuk_Minturun    0.000000
+      STASIUN_Nanggalo    0.000000
+ STASIUN_Parak_Karakah    0.000000
+  Musim_Hujan_Intensif    0.000000
+         Musim_Kemarau    0.000000
+     Musim_Peralihan_1    0.000000
+     Musim_Peralihan_2    0.000000
+
+============================================================
+PERBANDINGAN 3 MODEL
+============================================================
+              model  accuracy  precision   recall  f1_score
+Logistic Regression  0.723000   0.091800 0.445500  0.152200
+      Random Forest  0.668700   0.080400 0.472700  0.137400
+            XGBoost  0.650431   0.084648 0.536364  0.146221
+
+>>> MODEL TERBAIK BERDASARKAN F1-SCORE: Logistic Regression <<<

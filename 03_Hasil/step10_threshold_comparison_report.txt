@@ -1,0 +1,88 @@
+============================================================
+LAPORAN PERBANDINGAN THRESHOLD EKSTREM - STEP 10
+============================================================
+
+Total hari yang dianalisis: 3287
+
+--- NILAI PERSENTIL KE-95 PER STASIUN ---
+Lubuk_Minturun: persentil-95 dari seluruh data = 64.00mm
+Nanggalo: persentil-95 dari seluruh data = 62.70mm
+Parak_Karakah: persentil-95 dari seluruh data = 55.07mm
+
+(Untuk perbandingan, persentil-95 hanya dari hari hujan (>0mm), lebih representatif kejadian ekstrem):
+Lubuk_Minturun: persentil-95 (hari hujan saja) = 90.00mm
+Nanggalo: persentil-95 (hari hujan saja) = 96.00mm
+Parak_Karakah: persentil-95 (hari hujan saja) = 77.65mm
+
+============================================================
+PERBANDINGAN DISTRIBUSI LABEL PER OPSI THRESHOLD
+============================================================
+
+========================================
+STASIUN: Lubuk_Minturun
+========================================
+
+Opsi A - Persentil-95 (threshold=64.00mm):
+  Jumlah hari ekstrem: 164 dari 3287 (4.99%)
+
+Opsi B - 150mm (kategori BMKG 'Hujan Sangat Lebat'):
+  Jumlah hari ekstrem: 11 dari 3287 (0.33%)
+
+Opsi C - 50mm (ambang pemicu banjir, ref. Dhuha dkk. 2024):
+  Jumlah hari ekstrem: 236 dari 3287 (7.18%)
+
+========================================
+STASIUN: Nanggalo
+========================================
+
+Opsi A - Persentil-95 (threshold=62.70mm):
+  Jumlah hari ekstrem: 165 dari 3287 (5.02%)
+
+Opsi B - 150mm (kategori BMKG 'Hujan Sangat Lebat'):
+  Jumlah hari ekstrem: 21 dari 3287 (0.64%)
+
+Opsi C - 50mm (ambang pemicu banjir, ref. Dhuha dkk. 2024):
+  Jumlah hari ekstrem: 223 dari 3287 (6.78%)
+
+========================================
+STASIUN: Parak_Karakah
+========================================
+
+Opsi A - Persentil-95 (threshold=55.07mm):
+  Jumlah hari ekstrem: 165 dari 3287 (5.02%)
+
+Opsi B - 150mm (kategori BMKG 'Hujan Sangat Lebat'):
+  Jumlah hari ekstrem: 19 dari 3287 (0.58%)
+
+Opsi C - 50mm (ambang pemicu banjir, ref. Dhuha dkk. 2024):
+  Jumlah hari ekstrem: 196 dari 3287 (5.96%)
+
+============================================================
+TABEL RINGKASAN PERBANDINGAN (untuk pengambilan keputusan)
+============================================================
+       stasiun  p95_threshold  p95_count  p95_pct  bmkg150_count  bmkg150_pct  ref50_count  ref50_pct
+Lubuk_Minturun          64.00        164 4.989352             11     0.334652          236   7.179799
+      Nanggalo          62.70        165 5.019775             21     0.638880          223   6.784302
+ Parak_Karakah          55.07        165 5.019775             19     0.578035          196   5.962884
+
+============================================================
+ANALISIS CLASS IMBALANCE (rasio kelas 0 vs 1)
+============================================================
+
+Semakin kecil persentase 'hari ekstrem', semakin parah class imbalance-nya.
+Class imbalance parah akan menyulitkan model belajar pola kelas minoritas (ekstrem).
+Rule of thumb: rasio di bawah 5% sudah tergolong imbalance berat, butuh penanganan
+khusus (SMOTE, class_weight, threshold tuning) saat pemodelan nanti.
+
+Lubuk_Minturun:
+  Persentil-95 -> rasio 1:19.0 (kelas ekstrem 4.99%)
+  150mm        -> rasio 1:297.8 (kelas ekstrem 0.33%)
+  50mm         -> rasio 1:12.9 (kelas ekstrem 7.18%)
+Nanggalo:
+  Persentil-95 -> rasio 1:18.9 (kelas ekstrem 5.02%)
+  150mm        -> rasio 1:155.5 (kelas ekstrem 0.64%)
+  50mm         -> rasio 1:13.7 (kelas ekstrem 6.78%)
+Parak_Karakah:
+  Persentil-95 -> rasio 1:18.9 (kelas ekstrem 5.02%)
+  150mm        -> rasio 1:172.0 (kelas ekstrem 0.58%)
+  50mm         -> rasio 1:15.8 (kelas ekstrem 5.96%)

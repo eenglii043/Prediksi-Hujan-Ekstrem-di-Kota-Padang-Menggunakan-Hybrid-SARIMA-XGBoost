@@ -1,0 +1,83 @@
+import pandas as pd
+import numpy as np
+
+# ============================================
+# STEP 3: CLEANING SENTINEL VALUE
+# 9999 -> NaN (kerusakan alat, akan diimputasi)
+# 8888 -> 0   (trace rain <0.5mm, terverifikasi staff BMKG)
+# ============================================
+
+input_path = r"C:\Users\w11\Documents\awal tugas akhir\03_Hasil\Data_Padang_Filtered.csv"
+output_csv = r"C:\Users\w11\Documents\awal tugas akhir\03_Hasil\Data_3Pos_Cleaned.csv"
+output_report = r"C:\Users\w11\Documents\awal tugas akhir\03_Hasil\step3_cleaning_report.txt"
+
+df = pd.read_csv(input_path)
+
+target_ids = ['13710202a', '13711001a', '13711102a']  # Parak Karakah, Nanggalo, Lubuk Minturun
+df_3pos = df[df['POS HUJAN ID'].isin(target_ids)].copy()
+
+lines = []
+lines.append("="*60)
+lines.append("LAPORAN CLEANING SENTINEL VALUE - STEP 3 (REVISI)")
+lines.append("="*60)
+lines.append(f"\nTotal baris 3 pos terpilih (sebelum cleaning): {df_3pos.shape[0]}")
+
+# Statistik SEBELUM cleaning
+lines.append("\n--- STATISTIK SEBELUM CLEANING (per stasiun) ---")
+before_stats = df_3pos.groupby('NAME')['RAINFALL DAY MM'].describe()
+lines.append(before_stats.to_string())
+
+count_9999_before = (df_3pos['RAINFALL DAY MM'] == 9999).sum()
+count_8888_before = (df_3pos['RAINFALL DAY MM'] == 8888).sum()
+count_nan_before = df_3pos['RAINFALL DAY MM'].isna().sum()
+lines.append(f"\nJumlah 9999 sebelum cleaning: {count_9999_before}")
+lines.append(f"Jumlah 8888 sebelum cleaning: {count_8888_before}")
+lines.append(f"Jumlah NaN asli sebelum cleaning: {count_nan_before}")
+
+# ============================================
+# PROSES CLEANING
+# ============================================
+# 9999 -> NaN (kerusakan alat)
+df_3pos['RAINFALL DAY MM'] = df_3pos['RAINFALL DAY MM'].replace([9999, 9999.0], np.nan)
+# 8888 -> 0 (trace rain, verifikasi BMKG)
+df_3pos['RAINFALL DAY MM'] = df_3pos['RAINFALL DAY MM'].replace([8888, 8888.0], 0.0)
+
+# Statistik SETELAH cleaning
+lines.append("\n--- STATISTIK SETELAH CLEANING (per stasiun) ---")
+after_stats = df_3pos.groupby('NAME')['RAINFALL DAY MM'].describe()
+lines.append(after_stats.to_string())
+
+count_nan_after = df_3pos['RAINFALL DAY MM'].isna().sum()
+lines.append(f"\nTotal NaN setelah cleaning (hanya dari 9999 + NaN asli): {count_nan_after}")
+lines.append(f"(Ekspektasi: {count_nan_before} NaN asli + {count_9999_before} sentinel 9999 = {count_nan_before + count_9999_before})")
+lines.append(f"Jumlah baris yang diubah jadi 0 (bekas 8888): {count_8888_before}")
+
+# Breakdown NaN per stasiun setelah cleaning
+lines.append("\n--- JUMLAH NaN PER STASIUN SETELAH CLEANING (hanya karena 9999/asli) ---")
+nan_per_station = df_3pos.groupby('NAME')['RAINFALL DAY MM'].apply(lambda x: x.isna().sum())
+lines.append(nan_per_station.to_string())
+
+# Breakdown nilai 0 per stasiun (gabungan hujan asli 0mm + bekas 8888)
+lines.append("\n--- JUMLAH NILAI 0 PER STASIUN SETELAH CLEANING (hujan asli 0mm + bekas trace 8888) ---")
+zero_per_station = df_3pos.groupby('NAME')['RAINFALL DAY MM'].apply(lambda x: (x == 0).sum())
+lines.append(zero_per_station.to_string())
+
+total_hari = 4018  # 2015-01-01 s.d. 2025-12-31
+lines.append(f"\n--- PERSENTASE MISSING DATA (dari total {total_hari} hari 2015-2025) ---")
+for name in df_3pos['NAME'].unique():
+    n_missing = df_3pos[df_3pos['NAME']==name]['RAINFALL DAY MM'].isna().sum()
+    n_rows = df_3pos[df_3pos['NAME']==name].shape[0]
+    pct_missing_data = n_missing / n_rows * 100
+    pct_missing_total = (total_hari - n_rows + n_missing) / total_hari * 100
+    lines.append(f"{name}: {n_missing} NaN dari {n_rows} baris tersedia ({pct_missing_data:.2f}%), {pct_missing_total:.2f}% dari total hari 2015-2025")
+
+# Simpan hasil cleaning ke csv baru (masih long format, siap untuk resampling di step 4)
+df_3pos.to_csv(output_csv, index=False)
+
+with open(output_report, 'w', encoding='utf-8') as f:
+    f.write('\n'.join(lines))
+
+print(f"Selesai! Data bersih tersimpan di: {output_csv}")
+print(f"Laporan tersimpan di: {output_report}")
+print(f"Total NaN setelah cleaning: {count_nan_after}")
+print(f"Total nilai diubah jadi 0 (bekas 8888): {count_8888_before}")

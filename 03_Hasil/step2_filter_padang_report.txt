@@ -1,0 +1,44 @@
+============================================================
+LAPORAN FILTER KOTA PADANG (kode 1371) - STEP 2
+============================================================
+
+Total baris sebelum filter: 439955
+Total baris setelah filter (Kota Padang): 27018
+
+--- DAFTAR STASIUN KOTA PADANG & KELENGKAPAN DATA ---
+  POS HUJAN ID                         NAME  jumlah_baris                  tanggal_min                  tanggal_max  jumlah_nan
+2    13710202a  Muara Palam - Parak Karakah          3346  2015-01-01 00:00:00.0 +0:00  2025-12-31 00:00:00.0 +0:00           0
+9    13711102a               Lubuk Minturun          3345  2015-01-01 00:00:00.0 +0:00  2025-12-31 00:00:00.0 +0:00           1
+8    13711001a                     Nanggalo          3345  2015-01-01 00:00:00.0 +0:00  2025-12-31 00:00:00.0 +0:00           0
+7    13710803a          Limau Manih - UNAND          2961  2015-01-01 00:00:00.0 +0:00  2025-12-31 00:00:00.0 +0:00          20
+3    13710701a         Tambang Semen Padang          2950  2015-01-01 00:00:00.0 +0:00  2025-12-31 00:00:00.0 +0:00           0
+5    13710704a      Water Plan Semen Padang          2798  2015-01-01 00:00:00.0 +0:00  2025-12-31 00:00:00.0 +0:00           0
+0    13710101e                  Teluk Bayur          2775  2015-01-01 00:00:00.0 +0:00  2025-12-31 00:00:00.0 +0:00          23
+4    13710702a                  Bandar Buat          2765  2015-01-01 00:00:00.0 +0:00  2025-12-31 00:00:00.0 +0:00          33
+1    13710103a           Stamar Teluk Bayur          2569  2018-01-01 00:00:00.0 +0:00  2025-12-12 00:00:00.0 +0:00           0
+6    13710801a                     Rs Bunga            28  2017-01-01 00:00:00.0 +0:00  2017-03-28 00:00:00.0 +0:00          59
+
+--- SENTINEL VALUE DI DATA KOTA PADANG SAJA ---
+Jumlah 9999 di data Padang: 3127
+Jumlah 8888 di data Padang: 850
+
+--- SENTINEL VALUE PER STASIUN (Kota Padang) ---
+  POS HUJAN ID                         NAME  count_9999  count_8888  total_baris
+0    13710101e                  Teluk Bayur          16         235         2798
+1    13710103a           Stamar Teluk Bayur        2192          34         2569
+2    13710202a  Muara Palam - Parak Karakah          31         279         3346
+3    13710701a         Tambang Semen Padang         291          12         2950
+4    13710702a                  Bandar Buat          80         165         2798
+5    13710704a      Water Plan Semen Padang           6          47         2798
+6    13710801a                     Rs Bunga           0           0           87
+7    13710803a          Limau Manih - UNAND         490          22         2981
+8    13711001a                     Nanggalo          20          11         3345
+9    13711102a               Lubuk Minturun           1          45         3346
+
+--- HUBUNGAN NILAI 8888 DENGAN KOLOM 'RAINFALL TRACE' ---
+Total baris dengan TRACE='Y' di data Padang: 0
+
+Distribusi nilai RAINFALL TRACE saat RAINFALL DAY MM=8888 (n=850):
+RAINFALL TRACE
+N    850
+Name: count, dtype: int64

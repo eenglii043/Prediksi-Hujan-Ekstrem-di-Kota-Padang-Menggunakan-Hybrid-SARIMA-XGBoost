@@ -1,0 +1,25 @@
+============================================================
+HASIL MODEL DENGAN FITUR DRY_DAYS & RAIN_TREND
+============================================================
+Total fitur: 15
+Fitur baru yang ditambahkan: Dry_Days, Rain_Trend
+
+--- Threshold 0.40 ---
+Recall: 0.8455, Precision: 0.0793, F1: 0.1450
+False Alarm (FP): 1080, Kejadian Terlewat (FN): 17
+
+--- Threshold 0.45 ---
+Recall: 0.7545, Precision: 0.0873, F1: 0.1565
+False Alarm (FP): 868, Kejadian Terlewat (FN): 27
+
+--- Threshold 0.50 ---
+Recall: 0.6364, Precision: 0.0921, F1: 0.1609
+False Alarm (FP): 690, Kejadian Terlewat (FN): 40
+
+============================================================
+PERBANDINGAN DENGAN MODEL SEBELUMNYA (tanpa Dry_Days)
+============================================================
+Sebelum (Threshold 0.40): Recall 84.5%, FP 1077
+Sesudah (Threshold 0.40): Recall 84.5%, FP 1080
+
+Selisih FP: -3 kejadian berkurang!

@@ -1,0 +1,44 @@
+============================================================
+LAPORAN CLEANING SENTINEL VALUE - STEP 3 (REVISI)
+============================================================
+
+Total baris 3 pos terpilih (sebelum cleaning): 10037
+
+--- STATISTIK SEBELUM CLEANING (per stasiun) ---
+                              count        mean          std  min  25%  50%   75%     max
+NAME                                                                                     
+Lubuk Minturun               3345.0  134.760927  1037.089804  0.0  0.0  0.0  15.0  9999.0
+Muara Palam - Parak Karakah  3346.0  844.562253  2608.210213  0.0  0.0  2.5  20.0  9999.0
+Nanggalo                     3345.0  100.806697   921.150538  0.0  0.0  0.0  12.0  9999.0
+
+Jumlah 9999 sebelum cleaning: 52
+Jumlah 8888 sebelum cleaning: 335
+Jumlah NaN asli sebelum cleaning: 1
+
+--- STATISTIK SETELAH CLEANING (per stasiun) ---
+                              count       mean        std  min  25%  50%   75%    max
+NAME                                                                                 
+Lubuk Minturun               3344.0  12.205831  24.949950  0.0  0.0  0.0  13.0  261.0
+Muara Palam - Parak Karakah  3315.0  10.915324  25.029311  0.0  0.0  1.0   9.8  375.0
+Nanggalo                     3325.0  11.864782  26.909733  0.0  0.0  0.0  11.0  434.0
+
+Total NaN setelah cleaning (hanya dari 9999 + NaN asli): 53
+(Ekspektasi: 1 NaN asli + 52 sentinel 9999 = 53)
+Jumlah baris yang diubah jadi 0 (bekas 8888): 335
+
+--- JUMLAH NaN PER STASIUN SETELAH CLEANING (hanya karena 9999/asli) ---
+NAME
+Lubuk Minturun                  2
+Muara Palam - Parak Karakah    31
+Nanggalo                       20
+
+--- JUMLAH NILAI 0 PER STASIUN SETELAH CLEANING (hujan asli 0mm + bekas trace 8888) ---
+NAME
+Lubuk Minturun                 1750
+Muara Palam - Parak Karakah    1551
+Nanggalo                       1754
+
+--- PERSENTASE MISSING DATA (dari total 4018 hari 2015-2025) ---
+Muara Palam - Parak Karakah: 31 NaN dari 3346 baris tersedia (0.93%), 17.50% dari total hari 2015-2025
+Nanggalo: 20 NaN dari 3345 baris tersedia (0.60%), 17.25% dari total hari 2015-2025
+Lubuk Minturun: 2 NaN dari 3346 baris tersedia (0.06%), 16.77% dari total hari 2015-2025

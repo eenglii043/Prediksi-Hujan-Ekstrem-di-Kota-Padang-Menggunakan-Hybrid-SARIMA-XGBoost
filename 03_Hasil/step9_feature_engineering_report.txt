@@ -1,0 +1,63 @@
+============================================================
+LAPORAN FEATURE ENGINEERING - STEP 9
+============================================================
+
+Shape data awal: (3287, 3)
+Kolom awal: ['Lubuk_Minturun', 'Nanggalo', 'Parak_Karakah']
+
+--- FITUR WAKTU DIBUAT ---
+Bulan, Hari_Tahun, Hari_Minggu, Musim
+
+Distribusi Musim:
+Musim
+Kemarau           1098
+Hujan_Intensif    1091
+Peralihan_1        549
+Peralihan_2        549
+Name: count, dtype: int64
+
+--- FITUR LAG DIBUAT ---
+Total kolom lag: 9
+['Lubuk_Minturun_lag1', 'Lubuk_Minturun_lag2', 'Lubuk_Minturun_lag3', 'Nanggalo_lag1', 'Nanggalo_lag2', 'Nanggalo_lag3', 'Parak_Karakah_lag1', 'Parak_Karakah_lag2', 'Parak_Karakah_lag3']
+
+--- FITUR ROLLING DIBUAT ---
+Total kolom rolling: 6
+['Lubuk_Minturun_roll7', 'Lubuk_Minturun_roll30', 'Nanggalo_roll7', 'Nanggalo_roll30', 'Parak_Karakah_roll7', 'Parak_Karakah_roll30']
+
+Catatan: rolling dihitung dari shift(1) dulu agar tidak bocor data hari ini ke fiturnya sendiri (menghindari data leakage)
+
+--- JUMLAH NaN SETELAH FEATURE ENGINEERING (wajar untuk hari-hari awal karena belum ada histori) ---
+Lubuk_Minturun_lag1      1
+Lubuk_Minturun_lag2      2
+Lubuk_Minturun_lag3      3
+Nanggalo_lag1            1
+Nanggalo_lag2            2
+Nanggalo_lag3            3
+Parak_Karakah_lag1       1
+Parak_Karakah_lag2       2
+Parak_Karakah_lag3       3
+Lubuk_Minturun_roll7     1
+Lubuk_Minturun_roll30    1
+Nanggalo_roll7           1
+Nanggalo_roll30          1
+Parak_Karakah_roll7      1
+Parak_Karakah_roll30     1
+dtype: int64
+
+Total baris yang mengandung NaN (karena histori lag/rolling belum cukup): 3
+Baris ini akan berada di 2017-01-01 00:00:00 sampai sekitar 2017-01-30 00:00:00 (30 hari pertama, karena roll30 butuh histori terpanjang)
+
+Shape data akhir (sebelum drop NaN): (3287, 22)
+Total kolom fitur: 22
+
+Daftar seluruh kolom:
+['Lubuk_Minturun', 'Nanggalo', 'Parak_Karakah', 'Bulan', 'Hari_Tahun', 'Hari_Minggu', 'Musim', 'Lubuk_Minturun_lag1', 'Lubuk_Minturun_lag2', 'Lubuk_Minturun_lag3', 'Nanggalo_lag1', 'Nanggalo_lag2', 'Nanggalo_lag3', 'Parak_Karakah_lag1', 'Parak_Karakah_lag2', 'Parak_Karakah_lag3', 'Lubuk_Minturun_roll7', 'Lubuk_Minturun_roll30', 'Nanggalo_roll7', 'Nanggalo_roll30', 'Parak_Karakah_roll7', 'Parak_Karakah_roll30']
+
+--- PREVIEW 5 BARIS SETELAH FEATURE ENGINEERING LENGKAP (baris ke-35 dst, sudah ada histori) ---
+            Lubuk_Minturun  Nanggalo  Parak_Karakah  Bulan  Hari_Tahun  Hari_Minggu           Musim  Lubuk_Minturun_lag1  Lubuk_Minturun_lag2  Lubuk_Minturun_lag3  Nanggalo_lag1  Nanggalo_lag2  Nanggalo_lag3  Parak_Karakah_lag1  Parak_Karakah_lag2  Parak_Karakah_lag3  Lubuk_Minturun_roll7  Lubuk_Minturun_roll30  Nanggalo_roll7  Nanggalo_roll30  Parak_Karakah_roll7  Parak_Karakah_roll30
+TANGGAL                                                                                                                                                                                                                                                                                                                                                                                             
+2017-02-05             0.0       0.0            0.0      2          36            6  Hujan_Intensif                  0.0                  0.0                  4.0            0.0            0.0            0.0                 0.0                 0.0                 3.8             15.285714              11.886667       30.500000        12.766667            15.885714              8.446667
+2017-02-06             0.0       0.0            0.0      2          37            0  Hujan_Intensif                  0.0                  0.0                  0.0            0.0            0.0            0.0                 0.0                 0.0                 0.0             10.285714               9.620000       20.071429        11.166667            11.957143              7.086667
+2017-02-07            17.0       5.5           16.0      2          38            1  Hujan_Intensif                  0.0                  0.0                  0.0            0.0            0.0            0.0                 0.0                 0.0                 0.0             10.142857               8.903333       19.714286        10.300000            11.171429              6.120000
+2017-02-08            16.0       6.0            9.8      2          39            2  Hujan_Intensif                 17.0                  0.0                  0.0            5.5            0.0            0.0                16.0                 0.0                 0.0             11.857143               9.470000       19.785714        10.483333            12.785714              6.653333
+2017-02-09            70.5      24.0           20.0      2          40            3  Hujan_Intensif                 16.0                 17.0                  0.0            6.0            5.5            0.0                 9.8                16.0                 0.0              5.285714              10.003333        1.642857        10.683333             4.228571              6.963333

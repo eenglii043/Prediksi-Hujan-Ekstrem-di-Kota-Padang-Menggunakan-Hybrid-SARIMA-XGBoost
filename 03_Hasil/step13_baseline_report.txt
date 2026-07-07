@@ -1,0 +1,73 @@
+============================================================
+LAPORAN SPLIT DATA & BASELINE MODEL - STEP 13
+============================================================
+
+Shape data awal: (9852, 15)
+
+Shape setelah one-hot encoding: (9852, 20)
+Kolom hasil encoding: ['STASIUN_Lubuk_Minturun', 'STASIUN_Nanggalo', 'STASIUN_Parak_Karakah', 'Musim_Hujan_Intensif', 'Musim_Kemarau', 'Musim_Peralihan_1', 'Musim_Peralihan_2']
+
+--- TIME-BASED SPLIT ---
+Total hari unik: 3284
+Tanggal split: 2024-03-15
+Train: 2017-01-04 s.d. 2024-03-14
+Test : 2024-03-15 s.d. 2025-12-31
+
+Jumlah baris train: 7881 (80.0%)
+Jumlah baris test : 1971 (20.0%)
+
+--- DISTRIBUSI TARGET DI TRAIN VS TEST ---
+Train -> Normal: 7497, Ekstrem: 384 (4.87%)
+Test  -> Normal: 1861, Ekstrem: 110 (5.58%)
+
+--- DAFTAR FITUR FINAL YANG DIPAKAI MODEL (17 fitur) ---
+['Bulan', 'Hari_Tahun', 'Hari_Minggu', 'Lag1', 'Lag2', 'Lag3', 'Roll7', 'Roll30', 'Tetangga_Lag1_avg', 'Tetangga_Roll7_avg', 'STASIUN_Lubuk_Minturun', 'STASIUN_Nanggalo', 'STASIUN_Parak_Karakah', 'Musim_Hujan_Intensif', 'Musim_Kemarau', 'Musim_Peralihan_1', 'Musim_Peralihan_2']
+
+Scaling: RobustScaler di-fit HANYA pada data train, lalu diterapkan ke train & test
+(one-hot encoded columns tidak di-scale karena sudah biner 0/1)
+
+============================================================
+HASIL EVALUASI BASELINE LOGISTIC REGRESSION
+============================================================
+
+--- CONFUSION MATRIX ---
+                 Prediksi Normal   Prediksi Ekstrem
+Aktual Normal    1376              485
+Aktual Ekstrem   61                49
+
+--- METRIK UTAMA (Recall & F1 jadi acuan utama, BUKAN akurasi) ---
+Accuracy  : 0.7230  (kurang relevan karena imbalance, hanya info tambahan)
+Precision : 0.0918
+Recall    : 0.4455  <- metrik paling penting untuk mitigasi bencana
+F1-Score  : 0.1522
+
+--- CLASSIFICATION REPORT LENGKAP ---
+              precision    recall  f1-score   support
+
+      Normal       0.96      0.74      0.83      1861
+     Ekstrem       0.09      0.45      0.15       110
+
+    accuracy                           0.72      1971
+   macro avg       0.52      0.59      0.49      1971
+weighted avg       0.91      0.72      0.80      1971
+
+
+--- KOEFISIEN MODEL (semakin besar/positif, semakin kuat pengaruhnya ke prediksi 'Ekstrem') ---
+                 fitur  koefisien
+            Hari_Tahun   1.729301
+     Tetangga_Lag1_avg   0.228492
+           Hari_Minggu   0.211873
+                 Roll7   0.073798
+  Musim_Hujan_Intensif   0.012365
+     Musim_Peralihan_2   0.001260
+                  Lag3  -0.000837
+STASIUN_Lubuk_Minturun  -0.004708
+                  Lag1  -0.006879
+                Roll30  -0.011004
+      STASIUN_Nanggalo  -0.018438
+ STASIUN_Parak_Karakah  -0.026968
+     Musim_Peralihan_1  -0.028275
+    Tetangga_Roll7_avg  -0.032154
+         Musim_Kemarau  -0.035464
+                  Lag2  -0.050941
+                 Bulan  -1.548523

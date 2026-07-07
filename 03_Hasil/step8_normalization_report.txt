@@ -1,0 +1,72 @@
+============================================================
+LAPORAN NORMALISASI DATA - STEP 8
+============================================================
+
+Shape data: (3287, 3)
+
+--- STATISTIK SEBELUM NORMALISASI ---
+       Lubuk_Minturun     Nanggalo  Parak_Karakah
+count     3287.000000  3287.000000    3287.000000
+mean        12.278461    11.883019      10.976209
+std         25.028901    26.917492      25.101275
+min          0.000000     0.000000       0.000000
+25%          0.000000     0.000000       0.000000
+50%          0.000000     0.000000       1.000000
+75%         13.000000    11.000000      10.000000
+max        261.000000   434.000000     375.000000
+
+--- HASIL ROBUSTSCALER (metode utama) ---
+       Lubuk_Minturun     Nanggalo  Parak_Karakah
+count     3287.000000  3287.000000    3287.000000
+mean         0.944497     1.080274       0.997621
+std          1.925300     2.447045       2.510128
+min          0.000000     0.000000      -0.100000
+25%          0.000000     0.000000      -0.100000
+50%          0.000000     0.000000       0.000000
+75%          1.000000     1.000000       0.900000
+max         20.076923    39.454545      37.400000
+
+Parameter RobustScaler per kolom (median & IQR yang dipakai):
+  Lubuk_Minturun: median=0.0000, IQR=13.0000
+  Nanggalo: median=0.0000, IQR=11.0000
+  Parak_Karakah: median=1.0000, IQR=10.0000
+
+--- HASIL MINMAXSCALER (pembanding) ---
+       Lubuk_Minturun     Nanggalo  Parak_Karakah
+count     3287.000000  3287.000000    3287.000000
+mean         0.047044     0.027380       0.029270
+std          0.095896     0.062022       0.066937
+min          0.000000     0.000000       0.000000
+25%          0.000000     0.000000       0.000000
+50%          0.000000     0.000000       0.002667
+75%          0.049808     0.025346       0.026667
+max          1.000000     1.000000       1.000000
+
+--- HASIL STANDARDSCALER (pembanding) ---
+       Lubuk_Minturun      Nanggalo  Parak_Karakah
+count    3.287000e+03  3.287000e+03   3.287000e+03
+mean    -8.646702e-17 -1.297005e-17  -9.079037e-17
+std      1.000152e+00  1.000152e+00   1.000152e+00
+min     -4.906459e-01 -4.415280e-01  -4.373435e-01
+25%     -4.906459e-01 -4.415280e-01  -4.373435e-01
+50%     -4.906459e-01 -4.415280e-01  -3.974988e-01
+75%      2.883264e-02 -3.280966e-02  -3.889673e-02
+max      9.938885e+00  1.568427e+01   1.450441e+01
+
+--- ANALISIS SENSITIVITAS TERHADAP OUTLIER (nilai max) ---
+Perbandingan skala nilai MAKSIMUM (hari hujan paling ekstrem) di tiap metode:
+
+Lubuk_Minturun (nilai asli max=261.0mm):
+  RobustScaler  -> 20.0769
+  MinMaxScaler  -> 1.0000
+  StandardScaler-> 9.9389
+
+Nanggalo (nilai asli max=434.0mm):
+  RobustScaler  -> 39.4545
+  MinMaxScaler  -> 1.0000
+  StandardScaler-> 15.6843
+
+Parak_Karakah (nilai asli max=375.0mm):
+  RobustScaler  -> 37.4000
+  MinMaxScaler  -> 1.0000
+  StandardScaler-> 14.5044

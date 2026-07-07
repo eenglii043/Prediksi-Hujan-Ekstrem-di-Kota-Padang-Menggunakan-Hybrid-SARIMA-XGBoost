@@ -1,0 +1,18 @@
+============================================================
+LAPORAN UJI AKURASI IMPUTASI (RMSE) - STEP 6
+============================================================
+
+Total baris lengkap (tanpa NaN sama sekali) yang dipakai untuk uji: 3233
+Jumlah data yang disembunyikan per kolom: 323 (10%)
+
+--- HASIL RMSE PER STASIUN ---
+Stasiun             RMSE Interpolasi    RMSE KNN            Metode Terbaik
+Lubuk_Minturun      27.0449             18.4541             KNN
+Nanggalo            29.0795             18.0824             KNN
+Parak_Karakah       28.3097             21.4276             KNN
+
+--- RATA-RATA RMSE KESELURUHAN ---
+Interpolasi Linear: 28.1447
+KNN Imputer: 19.3213
+
+>>> METODE TERBAIK SECARA KESELURUHAN: KNN Imputer <<<

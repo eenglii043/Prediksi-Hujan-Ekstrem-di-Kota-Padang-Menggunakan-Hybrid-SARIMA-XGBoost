@@ -1,0 +1,71 @@
+============================================================
+LAPORAN RESHAPE KE LONG FORMAT - STEP 12
+============================================================
+
+Shape data wide (sebelum reshape): (3284, 25)
+Shape data long format (sesudah reshape): (9852, 15)
+Ekspektasi baris: 3284 hari x 3 stasiun = 9852
+
+--- DAFTAR KOLOM DATASET LONG FORMAT ---
+1. TANGGAL
+2. STASIUN
+3. Bulan
+4. Hari_Tahun
+5. Hari_Minggu
+6. Musim
+7. Lag1
+8. Lag2
+9. Lag3
+10. Roll7
+11. Roll30
+12. Tetangga_Lag1_avg
+13. Tetangga_Roll7_avg
+14. _Curah_Hujan_Hari_Ini_REF_ONLY [REFERENSI - JANGAN DIPAKAI SEBAGAI FITUR]
+15. Extreme_Event [TARGET]
+
+--- CEK NaN SETELAH RESHAPE (harus 0) ---
+TANGGAL                           0
+STASIUN                           0
+Bulan                             0
+Hari_Tahun                        0
+Hari_Minggu                       0
+Musim                             0
+Lag1                              0
+Lag2                              0
+Lag3                              0
+Roll7                             0
+Roll30                            0
+Tetangga_Lag1_avg                 0
+Tetangga_Roll7_avg                0
+_Curah_Hujan_Hari_Ini_REF_ONLY    0
+Extreme_Event                     0
+dtype: int64
+
+--- DISTRIBUSI TARGET GABUNGAN (Extreme_Event) ---
+Normal (0): 9358
+Ekstrem (1): 494 (5.01%)
+Rasio class imbalance: 1:18.9
+
+--- DISTRIBUSI TARGET PER STASIUN (VALIDASI ULANG, harus sama dengan Step 11) ---
+STASIUN         Extreme_Event
+Lubuk_Minturun  0                3120
+                1                 164
+Nanggalo        0                3119
+                1                 165
+Parak_Karakah   0                3119
+                1                 165
+
+--- KOLOM FITUR NUMERIK SIAP PAKAI (belum termasuk encoding STASIUN & Musim) ---
+['Bulan', 'Hari_Tahun', 'Hari_Minggu', 'Lag1', 'Lag2', 'Lag3', 'Roll7', 'Roll30', 'Tetangga_Lag1_avg', 'Tetangga_Roll7_avg']
+
+Catatan: kolom 'STASIUN' dan 'Musim' berupa kategori teks, perlu di-encode
+(one-hot encoding atau label encoding) sebelum masuk ke model - akan dilakukan di Step 13.
+
+--- PREVIEW 6 BARIS PERTAMA (2 hari x 3 stasiun) ---
+     TANGGAL         STASIUN  Bulan  Hari_Tahun  Hari_Minggu           Musim  Lag1  Lag2  Lag3      Roll7     Roll30  Tetangga_Lag1_avg  Tetangga_Roll7_avg  _Curah_Hujan_Hari_Ini_REF_ONLY  Extreme_Event
+0 2017-01-04  Lubuk_Minturun      1           4            2  Hujan_Intensif  38.5  19.5   0.0  19.333333  19.333333              26.50           16.500000                            51.0              0
+1 2017-01-04        Nanggalo      1           4            2  Hujan_Intensif  31.0  31.0   0.0  20.666667  20.666667              30.25           15.833333                            46.0              0
+2 2017-01-04   Parak_Karakah      1           4            2  Hujan_Intensif  22.0  15.0   0.0  12.333333  12.333333              34.75           20.000000                            57.0              1
+3 2017-01-05  Lubuk_Minturun      1           5            3  Hujan_Intensif  51.0  38.5  19.5  27.250000  27.250000              51.50           25.250000                            78.0              1
+4 2017-01-05        Nanggalo      1           5            3  Hujan_Intensif  46.0  31.0  31.0  27.000000  27.000000              54.00           25.375000                            96.0              1
+5 2017-01-05   Parak_Karakah      1           5            3  Hujan_Intensif  57.0  22.0  15.0  23.500000  23.500000              48.50           27.125000                            83.5              1

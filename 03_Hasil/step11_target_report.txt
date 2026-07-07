@@ -1,0 +1,73 @@
+============================================================
+LAPORAN PEMBUATAN TARGET Extreme_Event - STEP 11
+============================================================
+
+Shape data sebelum: (3287, 22)
+
+--- THRESHOLD PERSENTIL-95 PER STASIUN (dipakai sebagai label) ---
+Lubuk_Minturun: 64.00mm
+Nanggalo: 62.70mm
+Parak_Karakah: 55.07mm
+
+--- DISTRIBUSI TARGET PER STASIUN ---
+
+Lubuk_Minturun:
+  Normal (0): 3123
+  Ekstrem (1): 164 (4.99%)
+
+Nanggalo:
+  Normal (0): 3122
+  Ekstrem (1): 165 (5.02%)
+
+Parak_Karakah:
+  Normal (0): 3122
+  Ekstrem (1): 165 (5.02%)
+
+--- FINALISASI DATASET ---
+Baris sebelum drop NaN: 3287
+Baris setelah drop NaN: 3284
+Baris yang dibuang: 3 (hari-hari awal tanpa histori lag/rolling cukup)
+Rentang tanggal final: 2017-01-04 00:00:00 s.d. 2025-12-31 00:00:00
+
+--- DISTRIBUSI TARGET SETELAH DROP NaN (VALIDASI ULANG) ---
+Lubuk_Minturun: Ekstrem=164 (4.99%), Normal=3120
+Nanggalo: Ekstrem=165 (5.02%), Normal=3119
+Parak_Karakah: Ekstrem=165 (5.02%), Normal=3119
+
+--- DAFTAR SELURUH KOLOM DATASET FINAL (25 kolom) ---
+1. Lubuk_Minturun
+2. Nanggalo
+3. Parak_Karakah
+4. Bulan
+5. Hari_Tahun
+6. Hari_Minggu
+7. Musim
+8. Lubuk_Minturun_lag1
+9. Lubuk_Minturun_lag2
+10. Lubuk_Minturun_lag3
+11. Nanggalo_lag1
+12. Nanggalo_lag2
+13. Nanggalo_lag3
+14. Parak_Karakah_lag1
+15. Parak_Karakah_lag2
+16. Parak_Karakah_lag3
+17. Lubuk_Minturun_roll7
+18. Lubuk_Minturun_roll30
+19. Nanggalo_roll7
+20. Nanggalo_roll30
+21. Parak_Karakah_roll7
+22. Parak_Karakah_roll30
+23. Lubuk_Minturun_Extreme_Event
+24. Nanggalo_Extreme_Event
+25. Parak_Karakah_Extreme_Event
+
+Shape dataset final siap modeling: (3284, 25)
+
+--- PREVIEW 5 BARIS PERTAMA DATASET FINAL ---
+            Lubuk_Minturun  Nanggalo  Parak_Karakah  Bulan  Hari_Tahun  Hari_Minggu           Musim  Lubuk_Minturun_lag1  Lubuk_Minturun_lag2  Lubuk_Minturun_lag3  Nanggalo_lag1  Nanggalo_lag2  Nanggalo_lag3  Parak_Karakah_lag1  Parak_Karakah_lag2  Parak_Karakah_lag3  Lubuk_Minturun_roll7  Lubuk_Minturun_roll30  Nanggalo_roll7  Nanggalo_roll30  Parak_Karakah_roll7  Parak_Karakah_roll30  Lubuk_Minturun_Extreme_Event  Nanggalo_Extreme_Event  Parak_Karakah_Extreme_Event
+TANGGAL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+2017-01-04            51.0      46.0           57.0      1           4            2  Hujan_Intensif                 38.5                 19.5                  0.0           31.0           31.0            0.0                22.0                15.0                 0.0             19.333333              19.333333       20.666667        20.666667            12.333333             12.333333                             0                       0                            1
+2017-01-05            78.0      96.0           83.5      1           5            3  Hujan_Intensif                 51.0                 38.5                 19.5           46.0           31.0           31.0                57.0                22.0                15.0             27.250000              27.250000       27.000000        27.000000            23.500000             23.500000                             1                       1                            1
+2017-01-06            68.0      48.0           40.8      1           6            4  Hujan_Intensif                 78.0                 51.0                 38.5           96.0           46.0           31.0                83.5                57.0                22.0             37.400000              37.400000       40.800000        40.800000            35.500000             35.500000                             1                       0                            0
+2017-01-07            21.5      26.0           29.0      1           7            5  Hujan_Intensif                 68.0                 78.0                 51.0           48.0           96.0           46.0                40.8                83.5                57.0             42.500000              42.500000       42.000000        42.000000            36.383333             36.383333                             0                       0                            0
+2017-01-08             0.0       0.0            0.0      1           8            6  Hujan_Intensif                 21.5                 68.0                 78.0           26.0           48.0           96.0                29.0                40.8                83.5             39.500000              39.500000       39.714286        39.714286            35.328571             35.328571                             0                       0                            0

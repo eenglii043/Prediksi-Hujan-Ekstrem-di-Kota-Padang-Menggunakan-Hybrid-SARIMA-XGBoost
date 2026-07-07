@@ -1,0 +1,66 @@
+============================================================
+LAPORAN RESAMPLING KE FORMAT WIDE - STEP 4
+============================================================
+
+Jumlah duplikat tanggal-stasiun (harus 0): 0
+
+Bentuk data SEBELUM resampling tanggal lengkap: (3346, 3)
+Rentang tanggal SEBELUM resampling: 2015-01-01 00:00:00 s.d. 2025-12-31 00:00:00
+
+Bentuk data SETELAH resampling tanggal lengkap: (4018, 3)
+Total hari seharusnya (2015-01-01 s.d. 2025-12-31): 4018
+
+--- JUMLAH NaN PER STASIUN SETELAH RESAMPLING PENUH ---
+STASIUN
+Lubuk_Minturun    674
+Nanggalo          693
+Parak_Karakah     703
+dtype: int64
+
+--- PERSENTASE NaN PER STASIUN ---
+Lubuk_Minturun: 16.77%
+Nanggalo: 17.25%
+Parak_Karakah: 17.50%
+
+--- JUMLAH NaN PER TAHUN PER STASIUN ---
+STASIUN  Lubuk_Minturun  Nanggalo  Parak_Karakah
+TAHUN                                           
+2015                306       306            306
+2016                366       366            366
+2017                  0         0              0
+2018                  0         0              0
+2019                  0        20              0
+2020                  0         0              0
+2021                  1         0             10
+2022                  0         0             10
+2023                  0         0             11
+2024                  0         0              0
+2025                  1         1              0
+
+--- PREVIEW 10 BARIS PERTAMA ---
+STASIUN     Lubuk_Minturun  Nanggalo  Parak_Karakah
+TANGGAL                                            
+2015-01-01            18.0       0.0           11.0
+2015-01-02             0.0       0.0            0.0
+2015-01-03             0.0       0.0            0.0
+2015-01-04             0.0       0.0            0.0
+2015-01-05             7.0       2.0            0.0
+2015-01-06             0.0      11.0            3.0
+2015-01-07             0.0       0.0            0.0
+2015-01-08            24.0       0.0           13.0
+2015-01-09            50.0      71.0           45.0
+2015-01-10             8.0       0.0            6.0
+
+--- PREVIEW 10 BARIS TERAKHIR ---
+STASIUN     Lubuk_Minturun  Nanggalo  Parak_Karakah
+TANGGAL                                            
+2025-12-22             1.0       4.5            4.5
+2025-12-23            13.5       3.0            2.5
+2025-12-24             1.0       0.0            0.0
+2025-12-25            42.0      12.0            9.0
+2025-12-26            35.0      26.0           16.0
+2025-12-27            10.0       4.5            9.0
+2025-12-28             0.0       1.0            1.3
+2025-12-29             0.0       0.0            0.0
+2025-12-30             0.0       0.0            0.0
+2025-12-31           125.0      81.0           57.0

@@ -1,0 +1,40 @@
+============================================================
+LAPORAN EKSPANSI SPASIAL - 9 STASIUN KOTA PADANG
+============================================================
+Total stasiun Kota Padang: 10
+Target (3): ['13710202a', '13711001a', '13711102a']
+Tambahan (7): ['13710101e', '13710701a', '13710702a', '13710704a', '13710803a', '13710103a', '13710801a']
+Shape wide (9 stasiun): (3287, 10)
+Imputasi KNN selesai. NaN tersisa: 0
+Baris sebelum drop NaN: 9861
+Baris setelah drop NaN: 9852
+Shape long format (3 stasiun x hari): (9852, 14)
+Split date: 2024-03-15
+Train size: 7881 baris
+Test size: 1971 baris
+Distribusi target train: {0: 7497, 1: 384}
+Distribusi target test: {0: 1861, 1: 110}
+
+============================================================
+HASIL XGBOOST DENGAN SPASIAL 9 STASIUN
+============================================================
+Confusion Matrix:
+  Prediksi Normal  Prediksi Ekstrem
+Aktual Normal   1158           703
+Aktual Ekstrem  40             70
+
+Accuracy : 0.6230
+Precision: 0.0906
+Recall   : 0.6364
+F1-Score : 0.1586
+
+============================================================
+PERBANDINGAN DENGAN MODEL LAMA (3 stasiun, 2 tetangga)
+============================================================
+Metrik         Model Lama        Model Baru (9 stasiun)
+Recall         0.5364            0.6364            
+Precision      0.0846            0.0906            
+F1-Score       0.1462            0.1586            
+
+Perubahan Recall: +0.1000
+>>> RECALL MENINGKAT! <<<

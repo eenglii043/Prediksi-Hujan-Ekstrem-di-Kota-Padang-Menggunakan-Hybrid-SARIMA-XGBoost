@@ -1,0 +1,52 @@
+============================================================
+LAPORAN SHAP ANALYSIS - STEP 19
+============================================================
+
+Model: XGBoost V1 (fitur asli, class_weight/scale_pos_weight)
+Jumlah fitur: 17
+
+Parameter model (identik dengan Step 15): {'learning_rate': 0.01, 'max_depth': 3, 'min_child_weight': 5, 'n_estimators': 100, 'scale_pos_weight': np.float64(19.5234375), 'random_state': 42, 'eval_metric': 'logloss'}
+
+--- VALIDASI ULANG (harus sama dengan Step 15: Recall=0.5364, Precision=0.0846, F1=0.1462) ---
+Recall    : 0.5364
+Precision : 0.0846
+F1-Score  : 0.1462
+
+--- SHAP VALUES DIHITUNG ---
+Shape SHAP values: (1971, 17)
+Base value (rata-rata prediksi log-odds sebelum fitur): 0.0005
+
+--- GLOBAL FEATURE IMPORTANCE (rata-rata |SHAP value|) ---
+                 fitur  mean_abs_shap
+     Tetangga_Lag1_avg       0.308881
+                  Lag2       0.041995
+            Hari_Tahun       0.037632
+                  Lag1       0.037325
+    Tetangga_Roll7_avg       0.029220
+           Hari_Minggu       0.022166
+                  Lag3       0.014346
+                Roll30       0.010586
+                 Roll7       0.004791
+                 Bulan       0.000000
+STASIUN_Lubuk_Minturun       0.000000
+      STASIUN_Nanggalo       0.000000
+ STASIUN_Parak_Karakah       0.000000
+  Musim_Hujan_Intensif       0.000000
+         Musim_Kemarau       0.000000
+     Musim_Peralihan_1       0.000000
+     Musim_Peralihan_2       0.000000
+
+--- ARAH PENGARUH FITUR TERATAS (korelasi nilai fitur vs SHAP value) ---
+Tetangga_Lag1_avg: korelasi=0.733 (semakin TINGGI nilai fitur -> mendorong prediksi EKSTREM)
+Lag2: korelasi=-0.765 (semakin TINGGI nilai fitur -> mendorong prediksi NORMAL)
+Hari_Tahun: korelasi=0.084 (semakin TINGGI nilai fitur -> mendorong prediksi EKSTREM)
+Lag1: korelasi=0.034 (semakin TINGGI nilai fitur -> mendorong prediksi EKSTREM)
+Tetangga_Roll7_avg: korelasi=0.083 (semakin TINGGI nilai fitur -> mendorong prediksi EKSTREM)
+Hari_Minggu: korelasi=0.556 (semakin TINGGI nilai fitur -> mendorong prediksi EKSTREM)
+Lag3: korelasi=-0.330 (semakin TINGGI nilai fitur -> mendorong prediksi NORMAL)
+Roll30: korelasi=-0.313 (semakin TINGGI nilai fitur -> mendorong prediksi NORMAL)
+
+--- VISUALISASI TERSIMPAN ---
+Summary plot (beeswarm)  : C:\Users\w11\Documents\awal tugas akhir\03_Hasil\step19_shap_summary_plot.png
+Bar plot (global importance): C:\Users\w11\Documents\awal tugas akhir\03_Hasil\step19_shap_bar_plot.png
+Dependence plot (Tetangga_Lag1_avg): C:\Users\w11\Documents\awal tugas akhir\03_Hasil\step19_shap_dependence_top_feature.png

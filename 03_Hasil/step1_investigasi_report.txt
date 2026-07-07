@@ -1,0 +1,260 @@
+============================================================
+LAPORAN INVESTIGASI DATA - STEP 1
+============================================================
+
+Total baris: 439955
+Total kolom: 9
+
+--- CEK SENTINEL VALUE DI 'RAINFALL DAY MM' ---
+Jumlah baris dengan nilai 8888: 9847
+Jumlah baris dengan nilai 9999: 26000
+Jumlah baris dengan nilai 8888.0: 9847
+Jumlah baris dengan nilai 9999.0: 26000
+
+--- STATISTIK DESKRIPTIF 'RAINFALL DAY MM' ---
+count    437360.000000
+mean        802.710928
+std        2660.489326
+min           0.000000
+25%           0.000000
+50%           1.000000
+75%          15.300000
+max        9999.000000
+Name: RAINFALL DAY MM, dtype: float64
+
+--- TOP 20 NILAI TERTINGGI 'RAINFALL DAY MM' ---
+      POS HUJAN ID                 NAME               DATA TIMESTAMP  RAINFALL DAY MM RAINFALL TRACE
+141      13010202a     BPK Padang Laban  2015-02-21 00:00:00.0 +0:00           9999.0              N
+142      13010202a     BPK Padang Laban  2015-02-22 00:00:00.0 +0:00           9999.0              N
+143      13010202a     BPK Padang Laban  2015-02-23 00:00:00.0 +0:00           9999.0              N
+144      13010202a     BPK Padang Laban  2015-02-24 00:00:00.0 +0:00           9999.0              N
+145      13010202a     BPK Padang Laban  2015-02-25 00:00:00.0 +0:00           9999.0              N
+146      13010202a     BPK Padang Laban  2015-02-26 00:00:00.0 +0:00           9999.0              N
+147      13010202a     BPK Padang Laban  2015-02-27 00:00:00.0 +0:00           9999.0              N
+148      13010202a     BPK Padang Laban  2015-02-28 00:00:00.0 +0:00           9999.0              N
+810      13020401a   BPK Lembah Gumanti  2015-02-01 00:00:00.0 +0:00           9999.0              N
+811      13020401a   BPK Lembah Gumanti  2015-02-02 00:00:00.0 +0:00           9999.0              N
+812      13020401a   BPK Lembah Gumanti  2015-02-03 00:00:00.0 +0:00           9999.0              N
+813      13020401a   BPK Lembah Gumanti  2015-02-04 00:00:00.0 +0:00           9999.0              N
+814      13020401a   BPK Lembah Gumanti  2015-02-05 00:00:00.0 +0:00           9999.0              N
+815      13020401a   BPK Lembah Gumanti  2015-02-06 00:00:00.0 +0:00           9999.0              N
+816      13020401a   BPK Lembah Gumanti  2015-02-07 00:00:00.0 +0:00           9999.0              N
+817      13020401a   BPK Lembah Gumanti  2015-02-08 00:00:00.0 +0:00           9999.0              N
+818      13020401a   BPK Lembah Gumanti  2015-02-09 00:00:00.0 +0:00           9999.0              N
+819      13020401a   BPK Lembah Gumanti  2015-02-10 00:00:00.0 +0:00           9999.0              N
+11727    13710803a  Limau Manih - UNAND  2015-01-01 00:00:00.0 +0:00           9999.0              N
+11728    13710803a  Limau Manih - UNAND  2015-01-02 00:00:00.0 +0:00           9999.0              N
+
+--- UNIQUE VALUES DI 'RAINFALL TRACE' ---
+RAINFALL TRACE
+N    439604
+Y       351
+Name: count, dtype: int64
+
+--- DAFTAR SEMUA NAMA STASIUN UNIK (untuk cari yang di Kota Padang) ---
+       POS HUJAN ID                           NAME
+0         13010103a                       Air Pura
+288282    13770102a                     Air Santok
+7386      13071301a                      Akabiluru
+779       13020301a                     BBI Surian
+6206      13070104a             BP3K Bukit Barisan
+286482    13750203a               BPBD Bukittinggi
+60639     13750101a               BPBD Bukittinggi
+329       13010403a               BPK Batang Kapas
+419       13010601a             BPK Bayang Api-Api
+599       13010702a              BPK Duku Nanggalo
+1431      13021701a            BPK Hiliran Gumanti
+1133      13020901a            BPK IX Koto Seilasi
+810       13020401a             BPK Lembah Gumanti
+689       13010902a        BPK Linggo Sari Baganti
+90        13010202a               BPK Padang Laban
+1729      13030401a                  BPK Sijunjung
+2729      13030801a             BPK Tanjung Ampalu
+1341      13021201a              BPK X Koto Diatas
+3333      13040101a          BPK X Koto Paninjauan
+2184      13030501a                   BPP 4 Nagari
+4131      13050501a                  BPP Balah Air
+6026      13061301a                      BPP Bawan
+12328     13730201a                      BPP Kolok
+9206      13100101a                  BPP Koto Baru
+9386      13100301a                 BPP Koto Besar
+10288     13110301a   BPP Koto Parik Gadang Diateh
+9566      13100701a                 BPP Koto Salak
+31977     13041102a             BPP Padang Ganting
+4311      13050801a                   BPP Pilubang
+10170     13110107a          BPP Sangir Batanghari
+4766      13051101a                     BPP Sintuk
+3746      13040701a                  BPP Sungayang
+12505     13750202a                      BPP Talao
+6386      13070501a               BPP Tanjung Pati
+1251      13021105f                 Balitbu Aripan
+1192      13021104a                 Balitbu Sumani
+11609     13710702a                    Bandar Buat
+265252    13061201a                      Banuhampu
+5756      13060801a                           Baso
+3392      13040201a                        Batipuh
+237221    13010104a            Bendungan Indrapura
+129958    13080402a                         Bonjol
+7751      13080401a                         Bonjol
+30879     13040803a                  Bpp Sei Tarab
+3628      13040402a                        Cubadak
+1490      13021901a                   Danau Kembar
+29781     13040504a            Diperta Tanah Datar
+139784    13770401a              Disperta Pariaman
+5846      13061001a                    GAW Palupuh
+39876     13060902a                   GAW Pasadama
+3510      13040301a                   Galo Gandang
+127924    13070202a                         Guguak
+42438     13070203a                         Guguak
+115767    13020704a                 Gunuang Talang
+1015      13020701a                  Gunung Talang
+11162     13120601a                   Gunung Tuleh
+238778    13010501a                       Iv Jurai
+117377    13030303a                    Kamang Baru
+40242     13060903a                  Kamang Mudiak
+180       13010302a                        Kambang
+4946      13051501a                  Kandang Ampek
+11072     13120501a                         Kinali
+238015    13010401a                    Koto Kandis
+5666      13060501a                       Koto Tuo
+19900     13021001a                         Kubung
+3982      13050201a                         Kuliek
+2788      13030901a                        Kumanis
+3243      13031001a                        Kupitan
+956       13020601a                   Lembang Jaya
+11727     13710803a            Limau Manih - UNAND
+4856      13051401a                    Limau Purut
+127167    13070101a                      Limbanang
+5396      13060202a                   Lubuk Basung
+9746      13110101a           Lubuk Gadang Selatan
+11845     13711102a                 Lubuk Minturun
+115645    13020703a                  Lubuk Selasih
+7841      13080501a                 Lubuk Sikaping
+11904     13720101a                  Lubuk Sikarah
+2639      13030701a                    Lubuk Tarok
+6296      13070402a                          Luhak
+16606     13011002Z                         Lunang
+3923      13041401a                         Malalo
+138051    13750201a          Mandiangin Bk. Tinggi
+110012    13060301a                    Maninjau Kc
+5576      13060401a                          Matur
+7206      13070701a                    Muara Paiti
+11491     13710202a    Muara Palam - Parak Karakah
+1074      13020801a                    Muara Panas
+47561     13090301a                  Muara Siberut
+1819      13030402a                Muara Sijunjung
+9116      13090401a               Muara Sikabaluan
+1400      13021301a                   Muaro Pingai
+11786     13711001a                       Nanggalo
+121919    13041402a                        Ombilin
+3451      13040202a                   Ombilin weir
+270       13010402a  PU Batang Kapas - Tanah Kareh
+12387     13740101a              PU Padang Panjang
+186195    13010201a               PU Ranah Pesisir
+132663    13100204a                   PU Sei Dareh
+3864      13041101a                 Padang Ganting
+34752     13050901a                  Padang Laring
+12564     13760101a                Padang Mangatas
+10229     13110202a     Pakan Salasa - Muara Labuh
+5936      13061102a                     Palembayan
+6841      13070601a                      Pangkalan
+13047     13770101a                       Pariaman
+10712     13120101a                          Parit
+12623     13760102a               Payakumbuh Barat
+12988     13760501a             Payakumbuh Selatan
+139146    13760201a               Payakumbuh Utara
+897       13020501a                  Payung Sekaki
+224135    13110103a                       Peconina
+10347     13110602a                       Pekonina
+7931      13080701a                          Petok
+6751      13070504a           Politani Tanjungpati
+13106     13010102a                       Pu Tapan
+3569      13040304a                       Rambatan
+8386      13081402a                            Rao
+135715    13710801a                       Rs Bunga
+3805      13041001a                     Salimpaung
+10111     13110106a                  Sangir Jujuan
+3687      13040502a                        Saruaso
+11342     13121101a                          Sasak
+10802     13120102a                    Sei Baremas
+9296      13100203a                      Sei Dareh
+4221      13050701a                 Sei Geringging
+2274      13030601a                    Sei Langsat
+11252     13121003a                     Sei Talang
+30513     13040801a                      Sei Tarab
+5036      13051502a                        Sicaung
+8751      13081601a                        Simpati
+9476      13100401a                        Sitiung
+7296      13071002a                       Situjuah
+33075     13050203a             StaMet Minangkabau
+12446     13740201a                    Stageof PPI
+5126      13051503a        Staklim Padang Pariaman
+56004     13710103a             Stamar Teluk Bayur
+10892     13120301a                    Sukamenanti
+6116      13070103a                         Suliki
+116617    13021101a             Sumani Pompanisasi
+3153      13030902a                   Sumpur Kudus
+120673    13040802a                   Sungai Tarab
+4041      13050301a                          Sunur
+137627    13730402a                         Talawi
+278612    13120401a                     Talu BPTPH
+11550     13710701a           Tambang Semen Padang
+5216      13051601a                       Tandikat
+1549      13030302a                 Tanjung Gadang
+12269     13720201a                Tanjung Harapan
+1639      13030304a                   Tanjung Lolo
+5486      13060303a        Tanjung Raya - Maninjau
+509       13010701a                        Tarusan
+11432     13710101e                    Teluk Bayur
+22462     13021801a                     Tigo Lurah
+5306      13060101a                           Tiku
+264490    13060904a                         Tilkam
+9656      13100702a                         Timpeh
+48293     13090802a                      Tua Pejat
+8021      13081301a          UPT-BP Ladang Panjang
+10982     13120402a                   UPTB Talamau
+838       13020403f            UPTD Alahan Panjang
+4401      13051001a                 Ulakan Tapakis
+11668     13710704a        Water Plan Semen Padang
+20266     13021102a               X Koto Singkarak
+
+--- SEARCH: STASIUN DENGAN NAMA MIRIP TARGET KITA ---
+
+Kata kunci 'Parak':
+      POS HUJAN ID                         NAME
+11491    13710202a  Muara Palam - Parak Karakah
+
+Kata kunci 'Karakah':
+      POS HUJAN ID                         NAME
+11491    13710202a  Muara Palam - Parak Karakah
+
+Kata kunci 'Nanggalo':
+      POS HUJAN ID               NAME
+599      13010702a  BPK Duku Nanggalo
+11786    13711001a           Nanggalo
+
+Kata kunci 'Lubuk Minturun':
+      POS HUJAN ID            NAME
+11845    13711102a  Lubuk Minturun
+
+Kata kunci 'Teluk Bayur':
+      POS HUJAN ID                NAME
+11432    13710101e         Teluk Bayur
+56004    13710103a  Stamar Teluk Bayur
+
+Kata kunci 'Semen Padang':
+      POS HUJAN ID                     NAME
+11550    13710701a     Tambang Semen Padang
+11668    13710704a  Water Plan Semen Padang
+
+Kata kunci 'Padang':
+      POS HUJAN ID                     NAME
+90       13010202a         BPK Padang Laban
+3864     13041101a           Padang Ganting
+5126     13051503a  Staklim Padang Pariaman
+11550    13710701a     Tambang Semen Padang
+11668    13710704a  Water Plan Semen Padang
+12387    13740101a        PU Padang Panjang
+12564    13760101a          Padang Mangatas
+31977    13041102a       BPP Padang Ganting
+34752    13050901a            Padang Laring

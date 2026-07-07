@@ -1,0 +1,67 @@
+============================================================
+LAPORAN THRESHOLD TUNING - STEP 16
+============================================================
+
+Total data test: 1971
+Threshold default XGBoost (sebelumnya): 0.5
+
+--- TABEL PERBANDINGAN SEMUA THRESHOLD ---
+ threshold  precision   recall  f1_score  true_positive  false_positive  false_negative  true_negative  total_alert
+      0.05   0.055809 1.000000  0.105718            110            1861               0              0         1971
+      0.10   0.055809 1.000000  0.105718            110            1861               0              0         1971
+      0.15   0.055809 1.000000  0.105718            110            1861               0              0         1971
+      0.20   0.055809 1.000000  0.105718            110            1861               0              0         1971
+      0.25   0.056180 1.000000  0.106383            110            1848               0             13         1958
+      0.30   0.056818 1.000000  0.107527            110            1826               0             35         1936
+      0.35   0.057956 1.000000  0.109562            110            1788               0             73         1898
+      0.40   0.071329 0.927273  0.132468            102            1328               8            533         1430
+      0.45   0.085774 0.745455  0.153846             82             874              28            987          956
+      0.50   0.084648 0.536364  0.146221             59             638              51           1223          697
+      0.55   0.086694 0.390909  0.141914             43             453              67           1408          496
+      0.60   0.125714 0.200000  0.154386             22             153              88           1708          175
+      0.65   0.372093 0.145455  0.209150             16              27              94           1834           43
+      0.70   0.000000 0.000000  0.000000              0               0             110           1861            0
+      0.75   0.000000 0.000000  0.000000              0               0             110           1861            0
+      0.80   0.000000 0.000000  0.000000              0               0             110           1861            0
+      0.85   0.000000 0.000000  0.000000              0               0             110           1861            0
+      0.90   0.000000 0.000000  0.000000              0               0             110           1861            0
+      0.95   0.000000 0.000000  0.000000              0               0             110           1861            0
+
+============================================================
+REKOMENDASI THRESHOLD
+============================================================
+
+--- Threshold terbaik berdasarkan F1-Score tertinggi ---
+Threshold : 0.65
+Precision : 0.3721
+Recall    : 0.1455
+F1-Score  : 0.2092
+Total Alert (TP+FP) : 43
+
+--- Threshold terbaik untuk mitigasi bencana (Recall >= 0.5, Precision maksimal) ---
+Threshold : 0.45
+Precision : 0.0858
+Recall    : 0.7455
+F1-Score  : 0.1538
+Total Alert (TP+FP) : 956
+
+--- PEMBANDING: Threshold default (0.5) ---
+ threshold  precision   recall  f1_score  true_positive  false_positive  false_negative  true_negative  total_alert
+       0.5   0.084648 0.536364  0.146221             59             638              51           1223          697
+
+============================================================
+CATATAN INTERPRETASI
+============================================================
+
+Threshold lebih RENDAH dari 0.5 -> model lebih 'gampang curiga' (semua nilai
+probabilitas rendah pun dianggap ekstrem) -> Recall naik, tapi Precision turun
+(banyak alarm palsu).
+
+Threshold lebih TINGGI dari 0.5 -> model lebih 'pemilih' (hanya nilai
+probabilitas tinggi yang dianggap ekstrem) -> Precision naik, tapi Recall
+turun (banyak kejadian ekstrem asli malah terlewat/miss).
+
+Untuk konteks mitigasi bencana, biasanya threshold yang SEDIKIT lebih rendah
+dari 0.5 lebih disukai (mengutamakan Recall), karena False Negative (model
+bilang 'aman' padahal ekstrem) jauh lebih berbahaya dari False Positive
+(model bilang 'waspada' padahal ternyata aman).
