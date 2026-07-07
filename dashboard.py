@@ -9,6 +9,21 @@ import plotly.express as px
 import joblib
 import os
 from datetime import timedelta, datetime
+import os
+import subprocess
+
+FORECAST_PATH = "03_Hasil/prediksi_tahunan_2026_2028.csv"
+
+if not os.path.exists(FORECAST_PATH):
+    st.warning("⏳ File prediksi belum ditemukan. Generate otomatis...")
+    try:
+        subprocess.run(["python", "generate_forecast_manual.py"], check=True, capture_output=True)
+        if os.path.exists(FORECAST_PATH):
+            st.success("✅ Data prediksi berhasil digenerate!")
+        else:
+            st.error("❌ Gagal generate file prediksi.")
+    except Exception as e:
+        st.error(f"❌ Error: {e}")
 
 # ============================================================
 # KONFIGURASI
