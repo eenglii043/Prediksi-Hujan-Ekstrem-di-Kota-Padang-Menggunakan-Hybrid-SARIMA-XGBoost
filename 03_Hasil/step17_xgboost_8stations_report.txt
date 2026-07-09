@@ -1,0 +1,41 @@
+============================================================
+LAPORAN FEATURE ENGINEERING + XGBOOST - STEP 17 (8 STASIUN BERSIH)
+============================================================
+
+Total stasiun tersedia sbg tetangga: 8
+Stasiun target (jadi baris prediksi): ['Lubuk_Minturun', 'Nanggalo', 'Parak_Karakah']
+
+--- THRESHOLD P95 (VALIDASI, harus dekat dengan Step 11: 64/62.7/55.07) ---
+Lubuk_Minturun: 64.00mm
+Nanggalo: 62.70mm
+Parak_Karakah: 55.07mm
+
+Shape long format: (9858, 11)
+Jumlah tetangga per stasiun target: 7 (dari 8 stasiun bersih, minus diri sendiri)
+
+Distribusi target: Normal=9364, Ekstrem=494 (5.01%)
+
+Split date: 2024-03-14
+Train: 7884 baris | Test: 1974 baris
+scale_pos_weight: 19.5312
+
+--- HASIL TUNING ---
+Best params: {'learning_rate': 0.01, 'max_depth': 3, 'min_child_weight': 1, 'n_estimators': 100, 'scale_pos_weight': np.float64(19.53125)}
+Best CV recall: 0.6152
+
+--- CONFUSION MATRIX (8 STASIUN BERSIH, threshold default 0.5) ---
+                 Prediksi Normal   Prediksi Ekstrem
+Aktual Normal    1164              700
+Aktual Ekstrem   38                72
+
+--- METRIK UTAMA ---
+Accuracy  : 0.6261
+Precision : 0.0933
+Recall    : 0.6545
+F1-Score  : 0.1633
+
+--- PERBANDINGAN 3 VERSI ---
+Versi                              Recall      Precision   F1        
+3 stasiun (2 tetangga)             0.5364      0.0846      0.1462    
+9/10 stasiun (bermasalah, 2 buruk) 0.6364      0.0906      0.1586    
+8 stasiun BERSIH (final, defensible)0.6545      0.0933      0.1633    

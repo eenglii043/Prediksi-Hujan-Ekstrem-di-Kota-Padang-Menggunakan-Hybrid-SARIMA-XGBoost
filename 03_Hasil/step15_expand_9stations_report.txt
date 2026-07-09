@@ -1,0 +1,37 @@
+============================================================
+LAPORAN EXPAND KE 9 STASIUN - STEP 15
+============================================================
+
+Stasiun dikecualikan: ['Rs Bunga'] (data terlalu sedikit, cuma 87 baris/28 hari unik)
+
+Total stasiun dipakai: 9
+['Bandar_Buat', 'Limau_Manih_UNAND', 'Lubuk_Minturun', 'Nanggalo', 'Parak_Karakah', 'Stamar_Teluk_Bayur', 'Tambang_Semen_Padang', 'Teluk_Bayur', 'Water_Plan_Semen_Padang']
+
+--- CLEANING SENTINEL (9 STASIUN) ---
+Jumlah 9999: 3127 -> diubah ke NaN
+Jumlah 8888: 850 -> diubah ke 0
+
+Shape setelah resampling 2017-2025: (3287, 9)
+
+--- PERSENTASE NaN PER STASIUN (2017-2025) ---
+Bandar_Buat: 20.11%
+Limau_Manih_UNAND: 26.01%
+Lubuk_Minturun: 0.06%
+Nanggalo: 0.64%
+Parak_Karakah: 0.94%
+Stamar_Teluk_Bayur: 88.53%
+Tambang_Semen_Padang: 20.90%
+Teluk_Bayur: 17.83%
+Water_Plan_Semen_Padang: 16.85%
+
+--- SETELAH IMPUTASI KNN (9 stasiun sebagai basis korelasi) ---
+Total NaN tersisa: 0 (harus 0)
+STASIUN  Bandar_Buat  Limau_Manih_UNAND  Lubuk_Minturun     Nanggalo  Parak_Karakah  Stamar_Teluk_Bayur  Tambang_Semen_Padang  Teluk_Bayur  Water_Plan_Semen_Padang
+count    3287.000000        3287.000000     3287.000000  3287.000000    3287.000000         3287.000000           3287.000000  3287.000000              3287.000000
+mean       10.460464          12.781896       12.278461    11.874718      11.020246           12.256234             12.942558    11.644655                13.444334
+std        25.606364          24.400158       25.028901    26.918584      25.167039           18.325369             25.770952    25.465052                24.189760
+min         0.000000           0.000000        0.000000     0.000000       0.000000            0.000000              0.000000     0.000000                 0.000000
+25%         0.000000           0.000000        0.000000     0.000000       0.000000            0.000000              0.000000     0.000000                 0.000000
+50%         0.000000           3.000000        0.000000     0.000000       1.000000            4.585735              1.119101     2.000000                 1.500000
+75%        10.000000          15.000000       13.000000    11.000000      10.000000           17.597738             14.000000    11.000000                16.000000
+max       439.000000         256.000000      261.000000   434.000000     375.000000          237.500000            261.000000   384.500000               260.500000

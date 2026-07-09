@@ -1,3 +1,0 @@
-model,accuracy,precision,recall,f1_score
-"XGBoost V1 (class_weight, tanpa SMOTE)",0.6504,0.0846,0.5364,0.1462
-XGBoost + SMOTE,0.9335362760020294,0.0,0.0,0.0
